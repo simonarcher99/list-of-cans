@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Cans</title>
+</head>
+<body>
+    <header id="title">
+        <div class="container" id="title-container">
+            <h1>Jeanies list of cans</h1>
+        </div> 
+    </header>
+
+
+    <div class="container top-container">
+        <form action="{{ url_for('add_can') }}", method="post">
+            <input type="text", id="input" name='add_can', placeholder="Enter a can in the cupboard">
+            <button type="submit" id="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <ul>
+            {% for can in cans %}
+            <li class="inventory">
+                <p>{{can.name}}</p>
+                <p>Q: {{can.number}}</p>
+                <div class="grid-container">
+                    <form action="add/{{ can.id }}" method = "POST">
+                        <button type="submit"> + </button>
+                    </form>
+                    <form action="eat/{{ can.id }}" method = "POST">
+                        <button type="submit"> - </button>
+                    </form>
+                    <form action="delete/{{ can.id }}" method = 'DELETE'>
+                        <button type="submit">Del</button>
+                    </form>
+                </div> 
+            </li>
+
+            {% endfor %}
+        </ul>  
+    </div>
+</body>
+</html>
