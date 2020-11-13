@@ -9,7 +9,7 @@ from .models import User, Cans
 def index():
     if current_user.is_authenticated:
         user_id = current_user.id
-        cans = Cans.query.filter_by(user_id=user_id).all()
+        cans = Cans.queryorder_by(cans.name).filter_by(user_id=user_id).all()
         return render_template('user-home.html', cans=cans)
     else:
         return render_template('welcome.html')
