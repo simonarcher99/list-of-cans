@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 basedir = Path(__file__).parent
-load_dotenv(basedir / '.env')
+load_dotenv(str(basedir / '.env'))
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
