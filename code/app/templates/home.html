@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+    {% block content %} 
+
+    <div class="container" id="top-container">
+        <form action="{{ url_for('add_can') }}", method="post">
+            <input type="text" class="input-block" id="input" name='add_can', placeholder="Enter a new can to go in thte cupboard">
+            <button type="submit" class="btn btn-block" id="submit">Add Can</button>
+        </form>
+    </div>
+
+    <div class="container bg-light">
+        {% for can in cans %}
+        <div class="card">
+            <div class="info">
+                <form action="item/{{ can.id }}" method = "POST">
+                    <button class="item-btn btn">{{can.name}}</button>
+                </form>
+                <p>Q: {{can.number}}</p>
+            </div>    
+        </div>
+
+
+        {% endfor %}
+
+    </div>
+
+    {% endblock %}

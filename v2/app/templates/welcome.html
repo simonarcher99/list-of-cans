@@ -1,0 +1,26 @@
+<!-- <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div style="color:red;">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>User Registration</h1>
+    <p>Welcome to my page</p>
+    <a href="{{ url_for('login') }}">Login</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{ url_for('register') }}">Register</a>
+</body> -->
+
+{% extends "guest-base.html" %}
+    {% block content %}
+
+    <div  class="card">
+        <div id="welcome-block">
+            <h1>Welcome to your cupboard inventory</h1>
+            <p>Please login or signup to start keeping track on what is lurking behind those baked beans</p>
+        </div>
+    </div>
+
+    {% endblock %}

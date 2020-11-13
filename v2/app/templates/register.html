@@ -1,0 +1,52 @@
+{% extends "guest-base.html" %}
+    {% block content %}
+
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div style="color:red;">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="container card form">
+            <div class="title-block">
+                <h2 class="form-title">Sign Up</h2>
+                <p>It's quick and easy.</p>
+            </div>
+            <div class="form-content">   
+                <form action="" method="post">
+                    {{ form.csrf_token }}
+                    <div>
+                        {{ form.email.label }}
+                        <div class="input">{{ form.email }}</div>
+                        {% for error in form.email.errors %}
+                        <p style="color:red;">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div>
+                        {{ form.password.label }}
+                        {{ form.password }}
+                        {% for error in form.password.errors %}
+                        <p style="color:red;">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.password2.label }}
+                        {{ form.password2 }}
+                        {% for error in form.password2.errors %}
+                        <p style="color:red;">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div>
+                        <div class="btn btn-block">{{ form.submit }}</div>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </body>
+
+    {% endblock %}

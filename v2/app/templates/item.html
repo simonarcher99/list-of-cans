@@ -1,0 +1,30 @@
+{% extends "user-base.html" %}
+    {% block content %}
+    <div class="card">
+        <div>
+            <div>
+                <div class="info">
+                    <p>{{ item.name }}</p>
+                    <p>Q: {{ item.number }}</p>
+                </div>    
+                <div class="buttons">
+                    <div >
+                        <form action="add/{{ item.id }}" method = "POST">
+                            <button class="btn btn-dark btn-item" type="submit"> + </button>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="eat/{{ item.id }}" method = "POST">
+                            <button class="btn btn-dark btn-item" type="submit"> - </button>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="delete/{{ item.id }}" method = "DELETE">
+                            <button class="btn btn-dark btn-item" type="submit"> Del </button>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    {% endblock %}

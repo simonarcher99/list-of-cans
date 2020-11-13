@@ -1,0 +1,47 @@
+{% extends "guest-base.html" %}
+    {% block content %}
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div style="color:red;">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        
+        <div class="container card form">
+            <div class="title-block">
+                <h2>Login</h2>
+                <p>Welcome back. Please login to view your inventory.</p>
+            </div>
+            <div class="form-content">
+                <form action="" method="post">
+                    {{ form.csrf_token }}
+
+                    {{ form.email.label }}
+                    {{ form.email }}
+                    {% for error in form.email.errors %}
+                    <p style="color:red;">{{ error }}</p>
+                    {% endfor %}
+
+                    {{ form.password.label }}
+                    {{ form.password }}
+                    {% for error in form.password.errors %}
+                    <p style="color:red;">{{ error }}</p>
+                    {% endfor %}
+                    <div id="remember-me">
+                        
+                        {{ form.remember_me }} 
+                        <p> Remember me </p>
+                    </div>
+
+                    <div>
+                        <div class="btn btn-block">{{ form.submit }}</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    {% endblock %}

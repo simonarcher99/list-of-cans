@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+    {% block content %}
+
+    <div class="container bg-light">
+        <div class="card">
+            <div class="info">
+                <p>{{ item.name }}</p>
+                <p>Q: {{ item.number }}</p>
+            </div>    
+            <div class="buttons">
+                <form action="add/{{ item.id }}" method = "POST">
+                    <button class="btn btn-dark" type="submit"> + </button>
+                </form>
+                <form action="eat/{{ item.id }}" method = "POST">
+                    <button class="btn btn-dark" type="submit"> - </button>
+                </form>
+                <form action="delete/{{ item.id }}" method = "DELETE">
+                    <button class="btn btn-dark" type="submit"> Del </button>
+                </form>
+            </div> 
+        </div>
+
+    {% endblock %}
